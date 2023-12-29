@@ -7,7 +7,6 @@ import Question from "./components/Question";
 import NextButton from "./components/NextButton";
 import Progress from "./components/Progress";
 import Finish from "./components/Finish";
-import RestartBtn from "./components/Restartbtn";
 import Timer from "./components/Timer";
 
 const initialState = {
@@ -191,7 +190,7 @@ function reducer(state, action) {
     case "finish":
       return { ...state, status: "finish" };
     case "restart":
-      return { ...initialState, questions: state.questions, status: "active" };
+      return { ...initialState, status: "active" };
     default:
       throw new Error("Action unknown");
   }
@@ -239,7 +238,6 @@ function App() {
         {status === "finish" && (
           <>
             <Finish points={points} maxPossiblePoints={maxPoints} />
-            <RestartBtn dispatch={dispatch} />
           </>
         )}
       </Main>
